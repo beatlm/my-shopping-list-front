@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     return this.password.hasError('minlength') ? 'La contraseña debe tener al menos 8 caracteres' :
             'otro error';
   }
-  constructor(public auth: AngularFireAuth) { }
+  constructor() { }
 
   ngOnInit() {
   }
