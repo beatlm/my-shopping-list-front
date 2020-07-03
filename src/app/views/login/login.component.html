@@ -1,29 +1,36 @@
-<div class="crendentials-wrapper" fxLayoutAlign="center flex-start">
+<div fxLayout="column" fxLayoutWrap fxLayoutGap="2rem" fxLayoutAlign="center">
+  <div   fxLayoutAlign="center flex-start">
+    <mat-card  >
+      <mat-card-header fxLayoutAlign="center">
+        <mat-card-title>Introduzca sus datos para acceder</mat-card-title>
+      </mat-card-header>
+      <mat-card-content fxLayout="column" fxLayoutAlign="space-around none">
+        <mat-form-field>
+          <input matInput placeholder="E-mail" [formControl]="email" required />
+          <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+        </mat-form-field>
+      </mat-card-content>
 
-<mat-card class="example-card">
-  <mat-card-header>
-    <mat-card-title>Introduzca sus datos para acceder</mat-card-title>
-  </mat-card-header>
-  <mat-card-content  fxLayout="column"
-  fxLayoutAlign="space-around none">
-  <mat-form-field>
-    <input matInput placeholder="E-mail" [formControl]="email" required>
-    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-  </mat-form-field>
-</mat-card-content>
+      <mat-card-content fxLayout="column" fxLayoutAlign="space-around none">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Contraseña"
+            [formControl]="password"
+            [type]="hide ? 'text' : 'password'"
+          />
+          <mat-error *ngIf="password.invalid">{{
+            getErrorMessagePassword()
+          }}</mat-error>
 
-  <mat-card-content  fxLayout="column"
-  fxLayoutAlign="space-around none">
-
-  <mat-form-field>
-    <input matInput placeholder="Contraseña"[formControl]="password" [type]="hide ? 'text' : 'password'">
-    <mat-error *ngIf="password.invalid">{{getErrorMessagePassword()}}</mat-error>
-
-    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-  </mat-form-field>
-</mat-card-content>
-<mat-card-actions>
-    <button mat-stroked-button (click)="login()">Entrar</button>
-</mat-card-actions>
-</mat-card>
+          <mat-icon matSuffix (click)="hide = !hide">{{
+            hide ? "visibility" : "visibility_off"
+          }}</mat-icon>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-stroked-button (click)="login()">Entrar</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
 </div>

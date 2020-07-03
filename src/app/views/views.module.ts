@@ -4,13 +4,14 @@ import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from '../app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
   imports: [
     CommonModule, AppRoutingModule,MatCardModule,FormsModule,ReactiveFormsModule, FormControl
   ],
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, DashboardComponent],
   exports: [LoginComponent,MatCardModule],
   providers:[], 
 }) 

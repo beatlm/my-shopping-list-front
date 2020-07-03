@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Validators, FormControl } from '@angular/forms';
+ 
 
 @Component({
   selector: 'app-login',
@@ -8,9 +9,8 @@ import { Validators, FormControl } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
- 
   email = new FormControl('', [Validators.required, Validators.email]);
-  password= new FormControl('',[Validators.required, Validators.minLength(8)]);
+  password = new FormControl('', [ Validators.minLength(8)]);
 
   getErrorMessage() {
     return this.email.hasError('required') ? 'Por favor introduce un email' :
@@ -18,14 +18,14 @@ export class LoginComponent implements OnInit {
             '';
   }
   getErrorMessagePassword() {
-    return this.password.hasError('minLength') ? 'La contraseña debe tener al menos 8 caracteres' :
+    return this.password.hasError('minlength') ? 'La contraseña debe tener al menos 8 caracteres' :
             'otro error';
   }
-  constructor(private router: Router) { }
+  constructor(public auth: AngularFireAuth) { }
 
   ngOnInit() {
   }
-public login(){
-  console.log("prueba login"+this.email.value+" "+this.password.value);
+Login() {
+console.log('prueba login' + this.email.value + ' ' + this.password.value);
 }
 }
