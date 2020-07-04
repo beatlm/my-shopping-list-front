@@ -1,3 +1,5 @@
+import { AuthGuard } from './core/auth.guard';
+import { RegisterComponent } from './views/register/register/register.component';
 import { LoginComponent } from './views/login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -30,7 +32,7 @@ import { environment } from '../environments/environment';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, DashboardComponent],
+  declarations: [AppComponent, LoginComponent, DashboardComponent,RegisterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -52,7 +54,8 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    AngularFireAuthModule // imports firebase/auth, only needed for auth features
+    AngularFireAuthModule ,// imports firebase/auth, only needed for auth features
+    
   ],
   providers: [],
   bootstrap: [AppComponent],
