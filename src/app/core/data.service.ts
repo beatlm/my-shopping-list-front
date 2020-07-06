@@ -6,14 +6,18 @@ import { Injectable } from "@angular/core";
 })
 export class DataService {
   constructor(public firestore: AngularFirestore) {}
-  getListData() {
+  getListData(userMail) {
     console.log("Llamamos a firestore");
-
 
     return this.firestore
 
-      .collection("shoppinglist")//.doc("dk594gK0wRKlqH8tAiwi")
-   //  .where("shared", "==", "beatlm@gmail.com")
-      .snapshotChanges();
+      .collection("shoppinglist")
+      .ref
+      .where("shared", "==", userMail)
+      .get();
+
+/*      this.firestore
+    .doc("dk594gK0wRKlqH8tAiwi")
+    .snapshotChanges();*/
   }
 }

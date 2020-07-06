@@ -11,28 +11,41 @@ export class DashboardComponent implements OnInit {
   //dataSource = [{ product: "Leche" }, { product: "agua" }];
   dataSource = [];
 
-  constructor(public dataService: DataService) {}
+  constructor(public dataService: DataService) {
+    console.log("Constructor");
+  }
 
   ngOnInit() {
-    this.dataService
-      .getListData().subscribe((productsSnapshot) => {
-        productsSnapshot.forEach((productsList: any) => {
-          this.dataSource.push({
+    this.loadData();
+    
+  }
+  private loadData(){
+    this.dataService.getListData("beatlm@gmail.com").then(
+      (res) => {
+        // res.forEach((productsList: any) => {
+        /*  this.dataSource.push({
             id: productsList.payload.doc.id,
             data: productsList.payload.doc.data()
-          });
-        })
-      });
-      console.log(this.dataSource);
-    //  .subscribe(this.isOkGet.bind(this), this.catchError.bind(this));
-  }
-  private isOkGet(value) {
-    console.log(value);
-    this.dataSource = value;
+          });*/
+        res.forEach((doc) => {
+          console.log(doc.id, "=>", doc.data());
+       
+          for (let elemento of doc.data().products) {
+            console.log("Elemento :"+elemento);
+            this.dataSource.push({"product":elemento});
+            console.log("Midatasource");
+            console.log(this.dataSource);
+          }
+        });
+      },
+      (err) => {
+        console.log("Ha ocurrido un error \n" + err);
+
+        console.log(this.dataSource);
+      }
+    );
+    console.log("DATASOURCE:"+this.dataSource);
+
   }
 
-  private catchError(err) {
-    console.log("error " + err);
- 
-  }
 }
