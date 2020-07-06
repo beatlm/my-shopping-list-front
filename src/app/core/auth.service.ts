@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import "rxjs/add/operator/toPromise";
 import { AngularFireAuth } from "@angular/fire/auth";
 import * as firebase from "firebase/app";
+import { EmailValidator } from '@angular/forms';
 
 
 @Injectable({
@@ -39,7 +40,7 @@ export class AuthService {
     });
   }
 
-  login$(email: string, password: string) {
+  login$(email:string, password:string) {
     return new Promise<any>((resolve, reject) => {
       firebase
         .auth()
