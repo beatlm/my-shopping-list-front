@@ -9,7 +9,8 @@ import { Component, OnInit } from "@angular/core";
 export class DashboardComponent implements OnInit {
   displayedColumns: string[] = ["product"];
   //dataSource = [{ product: "Leche" }, { product: "agua" }];
-  dataSource = [];
+
+  listado=[];
 
   constructor(public dataService: DataService) {
     console.log("Constructor");
@@ -17,35 +18,24 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.loadData();
-    
   }
-  private loadData(){
-    this.dataService.getListData("beatlm@gmail.com").then(
-      (res) => {
-        // res.forEach((productsList: any) => {
-        /*  this.dataSource.push({
-            id: productsList.payload.doc.id,
-            data: productsList.payload.doc.data()
-          });*/
-        res.forEach((doc) => {
-          console.log(doc.id, "=>", doc.data());
-       
-          for (let elemento of doc.data().products) {
-            console.log("Elemento :"+elemento);
-            this.dataSource.push({"product":elemento});
-            console.log("Midatasource");
-            console.log(this.dataSource);
-          }
-        });
-      },
-      (err) => {
-        console.log("Ha ocurrido un error \n" + err);
+  private loadData() {
+    this.dataService
+      .getListData("beatlm@gmail.com")
+      .subscribe(this.showRecipes.bind(this), 
+      this.catchError.bind(this));
 
-        console.log(this.dataSource);
-      }
-    );
-    console.log("DATASOURCE:"+this.dataSource);
+    console.log("DATASOURCE:" + this.listado);
+  }
+  private showRecipes(value) {
+    this.listado = value;
+    console.log("DATASOURCE al finalizar la subscripción:" + this.listado);
+    console.log("Value recibido"+value);
+    console.log("Modificamos el data source a mano");
+    this.listado=[{product:"agua"}, {product:"pan"}];
 
   }
-
+  private catchError(err) {
+    console.log(err);
+  }
 }
