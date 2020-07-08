@@ -29,12 +29,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {}
   login() {
-    console.log("prueba login" + this.email.value + " " + this.password.value);
     this.authService.login$(this.email.value, this.password.value).then(res => {
       this.router.navigate(['/dashboard']);
     }, err => {
       console.log('Ha ocurrido un error \n'+err);
-     // this.errorMessage = err.message;
     });
 
   }

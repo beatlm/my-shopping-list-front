@@ -8,7 +8,6 @@ import { Component, OnInit } from "@angular/core";
 })
 export class DashboardComponent implements OnInit {
   displayedColumns: string[] = ["product"];
-  //dataSource = [{ product: "Leche" }, { product: "agua" }];
 
   listado=[];
 
@@ -21,21 +20,18 @@ export class DashboardComponent implements OnInit {
   }
   private loadData() {
     this.dataService
-      .getListData("beatlm@gmail.com")
-      .subscribe(this.showRecipes.bind(this), 
+      .getProductsListData$('beatlm@gmail.com','carrefour')
+      .subscribe(this.showData.bind(this), 
       this.catchError.bind(this));
 
-    console.log("DATASOURCE:" + this.listado);
   }
-  private showRecipes(value) {
+  private showData(value) {
+    console.log('Mostramos '+value);
     this.listado = value;
-    console.log("DATASOURCE al finalizar la subscripción:" + this.listado);
-    console.log("Value recibido"+value);
-    console.log("Modificamos el data source a mano");
-    this.listado=[{product:"agua"}, {product:"pan"}];
 
   }
   private catchError(err) {
     console.log(err);
+    this.listado=[{product: "No se han podido cargar los productos :'("} ];
   }
 }
