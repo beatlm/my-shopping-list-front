@@ -14,7 +14,7 @@ export class DataService {
 
   //Devuelve los productos para un usuario y tienda
   getProductsListData$(userMail, shop): Observable<any> {
-    const dataSource = [];
+    let dataSource = [];
     this.firestore
       .collection("shoppinglist")
       .ref.where("shared", "array-contains", userMail)
@@ -22,9 +22,11 @@ export class DataService {
       .get()
       .then(
         (res) => {
+          console.log("Tamaño del doc" + res.docs.length);
           res.forEach((doc) => {
             console.log(doc.id, "=>", doc.data());
             for (let elemento of doc.data().products) {
+              console.log("values " + elemento);
               dataSource.push({ product: elemento });
             }
             this.productsList$.next(dataSource);
@@ -33,15 +35,15 @@ export class DataService {
         (err) => {
           console.log("Ha ocurrido un error \n" + err);
           console.log(dataSource);
-          return this.productsList$;
         }
       );
+    this.productsList$.next(dataSource);
     return of(this.productsList$);
   }
 
   //Devuelve el nombre de las tiendas para las que el usuario tiene tiendas
   getShopListData$(userMail): Observable<any> {
-    const dataSource2: string[]= [];
+    let dataSource = [];
 
     this.firestore
       .collection("shoppinglist")
@@ -53,17 +55,16 @@ export class DataService {
           console.log(res.size);
 
           res.forEach((doc) => {
-            dataSource2.push(doc.data().shop);
+            dataSource.push({shop: doc.data().shop});
           });
-          this.shopsList$.next(dataSource2);
-          return of(this.shopsList$);
+          this.shopsList$.next(dataSource);
         },
         (err) => {
           console.log("Ha ocurrido un error \n" + err);
-          console.log(dataSource2);
+          console.log(dataSource);
         }
       );
-      console.log("devuelve "+dataSource2.length);
+    console.log("devuelve " + dataSource.length);
     return of(this.shopsList$);
   }
 }

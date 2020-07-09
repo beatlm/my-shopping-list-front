@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
   login() {
     this.authService.login$(this.email.value, this.password.value).then(res => {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/shops']);
     }, err => {
       console.log('Ha ocurrido un error \n'+err);
     });

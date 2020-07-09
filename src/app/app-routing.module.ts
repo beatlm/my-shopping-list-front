@@ -8,7 +8,7 @@ import { DashboardComponent } from "./views/dashboard/dashboard.component";
 const routes: Routes = [
   { path: "", component: LoginComponent },
   { path: "register", component: RegisterComponent },
-  { path: "dashboard", component: DashboardComponent }, //canActivate: [AuthGuard] },
+  { path: "dashboard/:shop", component: DashboardComponent }, //canActivate: [AuthGuard] },
   { path: "shops", component: ShopsComponent },
 ];
 
