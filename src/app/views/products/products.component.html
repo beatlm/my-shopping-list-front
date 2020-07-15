@@ -10,14 +10,12 @@
       <td mat-cell *matCellDef="let element"> {{element.product}} </td>
     </ng-container>
 
-
-
     <!--  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>-->
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (swipe)=”onSwipe()” ></tr>
   </table>
 </div>
 <div>
-  <input matInput placeholder="Producto" [formControl]="product" required />
+  <input matInput placeholder="Producto" [formControl]="formProduct" required />
   <button mat-raised-button color="primary" (click)="addProduct()">Añadir</button>
 
 </div>

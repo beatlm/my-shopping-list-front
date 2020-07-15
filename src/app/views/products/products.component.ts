@@ -12,7 +12,7 @@ export class ProductsComponent implements OnInit {
   displayedColumns: string[] = ["product"];
   shop: string = "";
   listado = [];
-  product = new FormControl("", [Validators.required]);
+  formProduct = new FormControl("", [Validators.required]);
 
   constructor(
     public dataService: DataService,
@@ -43,7 +43,11 @@ export class ProductsComponent implements OnInit {
 
   public addProduct() {
     this.dataService
-      .addProductToList$(this.product.value, this.shop, "beatlm@gmail.com")
+      .addProductToList$(this.formProduct.value, this.shop, "beatlm@gmail.com")
       .subscribe(this.showData.bind(this), this.catchError.bind(this));
+    this.formProduct.reset();
+  }
+  public onSwipe() {
+    console.log("Se ha deslizado");
   }
 }

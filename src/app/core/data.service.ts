@@ -65,8 +65,12 @@ export class DataService {
         },
         (err) => {
           console.log("Ha ocurrido un error \n" + err);
+
         }
+
       );
+      return this.getProductsListData$(userMail,shop);
+
   }
 
   //Devuelve el nombre de las tiendas para las que el usuario tiene tiendas
