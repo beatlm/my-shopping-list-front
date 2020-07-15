@@ -3,12 +3,12 @@ import { RegisterComponent } from "./views/register/register/register.component"
 import { LoginComponent } from "./views/login/login.component";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { DashboardComponent } from "./views/dashboard/dashboard.component";
+import { ProductsComponent } from "./views/products/products.component";
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
   { path: "register", component: RegisterComponent },
-  { path: "dashboard/:shop", component: DashboardComponent }, //canActivate: [AuthGuard] },
+  { path: "shops/:shop", component: ProductsComponent }, //canActivate: [AuthGuard] },
   { path: "shops", component: ShopsComponent },
 ];
 

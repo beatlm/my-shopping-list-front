@@ -29,13 +29,13 @@ import {
 
 import { environment } from "../environments/environment";
 
-import { DashboardComponent } from "./views/dashboard/dashboard.component";
+import { ProductsComponent } from "./views/products/products.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent,
+    ProductsComponent,
     RegisterComponent,
     ShopsComponent
   ],

@@ -26,13 +26,12 @@ export class ShopsComponent implements OnInit {
     console.log('VALUE ');
     console.log(value);
     this.listado = value;
-   // this.listado=["mercadona","dia","carrefour"];
+   
+  // this.listado=["mercadona","dia","carrefour"];
   }
   private catchError(err) {
     console.log(err);
     //this.listado=["No se han podido cargar las tiendas " ];
   }
-  public mostrar(index) {
-    this.router.navigate(['/dashboard/'+this.listado[index]]);
-  }
+
 }

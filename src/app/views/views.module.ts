@@ -5,17 +5,17 @@ import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from '../app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register/register.component';
 import { ShopsComponent } from './shops/shops.component';
+import { ProductsComponent } from './products/products.component';
 
 
 @NgModule({
   imports: [
     CommonModule, AppRoutingModule,MatCardModule,FormsModule,ReactiveFormsModule, FormControl
   ],
-  declarations: [LoginComponent, DashboardComponent, RegisterComponent, ShopsComponent],
-  exports: [LoginComponent,MatCardModule,RegisterComponent,DashboardComponent],
+  declarations: [LoginComponent, ProductsComponent, RegisterComponent, ShopsComponent],
+  exports: [LoginComponent,MatCardModule,RegisterComponent,ProductsComponent],
   providers:[AuthService], 
 }) 
 
