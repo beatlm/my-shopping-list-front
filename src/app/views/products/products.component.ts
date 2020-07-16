@@ -47,7 +47,8 @@ export class ProductsComponent implements OnInit {
       .subscribe(this.showData.bind(this), this.catchError.bind(this));
     this.formProduct.reset();
   }
-  public onSwipe() {
-    console.log("Se ha deslizado");
+  public delete(product) {
+    console.log("Se ha deslizado:"+product);
+    alert('se ha swipeado');
   }
 }
