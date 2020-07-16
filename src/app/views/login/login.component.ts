@@ -10,6 +10,7 @@ import { Validators, FormControl } from "@angular/forms";
   styleUrls: ["./login.component.css"],
 })
 export class LoginComponent implements OnInit {
+ hide = false;
   email = new FormControl("", [Validators.required, Validators.email]);
   password = new FormControl("", [Validators.minLength(8)]);
 

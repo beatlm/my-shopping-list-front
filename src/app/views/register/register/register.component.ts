@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  hide = false;
+
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [ Validators.minLength(8)]);
 passwordRepeat = new FormControl('',[Validators.required])
