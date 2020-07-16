@@ -33,11 +33,7 @@ import { ProductsComponent } from "./views/products/products.component";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
-    ProductsComponent,
-    RegisterComponent,
-    ShopsComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
