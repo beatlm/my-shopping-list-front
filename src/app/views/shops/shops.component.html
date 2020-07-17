@@ -13,7 +13,13 @@
   
 
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
 </table>
+<input matInput placeholder="Tienda" [formControl]="formShop" required />
+
+<button mat-fab color="primary" (click)="addShop()">
+  <mat-icon>add</mat-icon>
+</button>
 
 
 

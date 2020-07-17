@@ -23,8 +23,6 @@ export class DataService {
         (res) => {
           res.forEach((doc) => {
             for (let elemento of doc.data().products) {
-              console.log("elemento");
-              console.log(elemento);
               dataSource.push({ product: elemento });
             }
             console.log("DATASOURCE");
@@ -41,7 +39,22 @@ export class DataService {
     return of(this.productsList$);
   }
 
-  addProductToList$(product: String, shop: String, userMail: String):Observable<any> {
+  //Crea una tienda nueva
+  addProductsList$(userMail, shop): void {
+    this.firestore
+      .collection("shoppinglist")
+      .add({ shop: shop, shared: [userMail], products: [] });
+
+
+
+      
+  }
+
+  addProductToList$(
+    product: String,
+    shop: String,
+    userMail: String
+  ): Observable<any> {
     console.log("Llamamos al servicio para añadir el producto:" + product);
     //Obtenemos el id del documento
     this.firestore
@@ -59,18 +72,14 @@ export class DataService {
               .collection("shoppinglist")
               .doc<any>(doc.id)
               .update({ products: this.productos });
-              return this.getProductsListData$(userMail,shop);
-
+            return this.getProductsListData$(userMail, shop);
           });
         },
         (err) => {
           console.log("Ha ocurrido un error \n" + err);
-
         }
-
       );
-      return this.getProductsListData$(userMail,shop);
-
+    return this.getProductsListData$(userMail, shop);
   }
 
   //Devuelve el nombre de las tiendas para las que el usuario tiene tiendas
@@ -93,5 +102,43 @@ export class DataService {
         }
       );
     return of(this.shopsList$);
+  }
+
+  //Borra un producto de la lista
+
+  deleteProductFromList$(
+    product: String,
+    shop: String,
+    userMail: String
+  ): Observable<any> {
+    console.log("Llamamos al servicio para eliminar el producto:" + product);
+    //Obtenemos el id del documento
+    this.firestore
+      .collection("shoppinglist")
+      .ref.where("shared", "array-contains", userMail)
+      .where("shop", "==", shop)
+      .get()
+      .then(
+        (res) => {
+          res.forEach((doc) => {
+            this.productos = doc.data().products;
+
+            const index: number = this.productos.indexOf(product);
+            if (index !== -1) {
+              this.productos.splice(index, 1);
+            }
+
+            this.firestore
+              .collection("shoppinglist")
+              .doc<any>(doc.id)
+              .update({ products: this.productos });
+            return this.getProductsListData$(userMail, shop);
+          });
+        },
+        (err) => {
+          console.log("Ha ocurrido un error \n" + err);
+        }
+      );
+    return this.getProductsListData$(userMail, shop);
   }
 }

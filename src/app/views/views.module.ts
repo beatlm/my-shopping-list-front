@@ -8,7 +8,12 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RegisterComponent } from "./register/register/register.component";
 import { ShopsComponent } from "./shops/shops.component";
 import { ProductsComponent } from "./products/products.component";
-import { MatIconModule, MatFormFieldModule, MatTableModule } from "@angular/material";
+import {
+  MatIconModule,
+  MatFormFieldModule,
+  MatTableModule,
+  MatInputModule,
+} from "@angular/material";
 
 @NgModule({
   imports: [
@@ -19,7 +24,8 @@ import { MatIconModule, MatFormFieldModule, MatTableModule } from "@angular/mate
     ReactiveFormsModule,
     MatIconModule,
     MatFormFieldModule,
-    MatTableModule
+    MatTableModule,
+    MatInputModule,
   ],
   declarations: [
     LoginComponent,

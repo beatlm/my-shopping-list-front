@@ -1,7 +1,5 @@
-import { ShopsComponent } from './views/shops/shops.component';
-import { AuthGuard } from "./core/auth.guard";
-import { RegisterComponent } from "./views/register/register/register.component";
-import { LoginComponent } from "./views/login/login.component";
+import { ViewsModule } from './views/views.module';
+
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -36,6 +34,7 @@ import { ProductsComponent } from "./views/products/products.component";
     AppComponent
   ],
   imports: [
+    ViewsModule,
     BrowserModule,
     AppRoutingModule,
     MatCardModule,

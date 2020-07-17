@@ -49,6 +49,8 @@ export class ProductsComponent implements OnInit {
   }
   public delete(product) {
     console.log("Se ha deslizado:"+product);
-    alert('se ha swipeado');
+    this.dataService
+    .deleteProductFromList$(product, this.shop, "beatlm@gmail.com")
+    .subscribe(this.showData.bind(this), this.catchError.bind(this));
   }
 }
