@@ -1,0 +1,25 @@
+version: '3.3'
+services: 
+  
+   my-shopping-list-ui:
+     build:
+       context: ./
+       dockerfile: Dockerfile.Angular 
+       args:
+         url: https://github.com/beatlm/my-shopping-list-front.git
+         project: my-shopping-list-front
+         configuration: production
+     container_name: my-shopping-list-cont
+     ports: #Comentado para no exponerlo hacia fuera
+       - 4200:4200
+     image: my-shopping-list-img
+
+
+
+
+
+      
+
+
+
+
