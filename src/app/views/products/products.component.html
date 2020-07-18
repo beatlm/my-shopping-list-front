@@ -1,29 +1,36 @@
-<div>
-  <table mat-table [dataSource]="listado" class="mat-elevation-z8">
+<div class="main-div">
+  <mat-card class="main-container">
 
-    <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
+  <table mat-table [dataSource]="listado" class="mat-elevation-z8 center">
 
-    <!-- Position Column -->
     <ng-container matColumnDef="product">
       <th mat-header-cell *matHeaderCellDef> Producto </th>
-      <td mat-cell *matCellDef="let element"> {{element.product}} 
-        <button mat-fab color="primary" (click)="delete(element.product)">
-          <mat-icon>delete</mat-icon>
+      <td mat-cell *matCellDef="let element"> {{element.product}}
+        <button mat-icon-button color="primary" (click)="delete(element.product)">
+          <mat-icon class="right_icon">highlight_off</mat-icon>
         </button>
       </td>
     </ng-container>
 
+
     <!--  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>-->
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (swiperight)="delete(product)" ></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (swiperight)="delete(product)"></tr>
   </table>
-</div>
-<div>
-  <input matInput placeholder="Producto" [formControl]="formProduct" required />
-  <button mat-raised-button color="primary" (click)="addProduct()">Añadir</button>
 
-</div>
+  
+    <mat-form-field class="form-field">
+      <input matInput placeholder="Añadir producto" [formControl]="formProduct" />
+    </mat-form-field>
+    <button mat-icon-button color="primary" (click)="addProduct()">
+      <mat-icon aria-hidden="false">add</mat-icon>
+    </button>
+ 
 
-<div>
-  <a mat-raised-button color="warn" routerLink="/shops">Volver</a>
+    <mat-card-footer>	
+    <a mat-button routerLink="/shops">
+      <mat-icon>arrow_back_ios</mat-icon>Volver
+    </a>
+    </mat-card-footer>
+  </mat-card>
+
 </div>

@@ -13,6 +13,8 @@ import {
   MatFormFieldModule,
   MatTableModule,
   MatInputModule,
+  MatButtonModule,
+  MatChipsModule,
 } from "@angular/material";
 
 @NgModule({
@@ -26,6 +28,8 @@ import {
     MatFormFieldModule,
     MatTableModule,
     MatInputModule,
+    MatButtonModule,
+    MatChipsModule
   ],
   declarations: [
     LoginComponent,
