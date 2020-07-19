@@ -1,6 +1,10 @@
-.center{
+.center {
     display: flex;
     justify-content: center;
     align-items: center;
     width: auto;
+}
+
+.background-shop {
+    background-color: blue;
 }

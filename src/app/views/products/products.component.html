@@ -1,7 +1,7 @@
 <div class="main-div">
   <mat-card class="main-container">
 
-  <table mat-table [dataSource]="listado" class="mat-elevation-z8 center">
+  <table mat-table [dataSource]="listado" [ngStyle]="shop=='dia' ? {'background':'rgba(255,177,163,1)'} : shop=='carrefour' ? {'background':'rgba(183,222,237,1)'} : shop=='mercadona' ? {'background': 'rgba(206,235,210,1)'} : {'background-color':'white'}" class="mat-elevation-z8 center background-shop">
 
     <ng-container matColumnDef="product">
       <th mat-header-cell *matHeaderCellDef> Producto </th>

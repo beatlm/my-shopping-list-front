@@ -53,4 +53,6 @@ export class ProductsComponent implements OnInit {
     .deleteProductFromList$(product, this.shop, "beatlm@gmail.com")
     .subscribe(this.showData.bind(this), this.catchError.bind(this));
   }
+
+
 }
