@@ -1,54 +1,32 @@
-  <div  class="main-div">
-    <mat-card  >
-      <mat-card-header fxLayoutAlign="center">
-        <mat-card-title>Introduzca sus datos para registrarse</mat-card-title>
-      </mat-card-header>
-      <mat-card-content >
-        <mat-form-field>
-          <input matInput placeholder="E-mail" [formControl]="email" required />
-          <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
-        </mat-form-field>
-      </mat-card-content>
+  <div class="main-div">
+    <mat-card-title>Introduzca sus datos para registrarse</mat-card-title>
+    <mat-form-field>
+      <input matInput placeholder="E-mail" [formControl]="email" required />
+      <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
 
-      <mat-card-content >
-        <mat-form-field>
-          <input
-            matInput
-            placeholder="Contraseña"
-            [formControl]="password"
-            [type]="hide ? 'text' : 'password'"
-          />
-          <mat-error *ngIf="password.invalid">{{
+    <mat-form-field>
+      <input matInput placeholder="Contraseña" [formControl]="password" [type]="hide ? 'text' : 'password'" />
+      <mat-error *ngIf="password.invalid">{{
             getErrorMessagePassword()
           }}</mat-error>
 
-          <mat-icon matSuffix (click)="hide = !hide">{{
+      <mat-icon matSuffix (click)="hide = !hide">{{
             hide ? "visibility" : "visibility_off"
           }}</mat-icon>
-        </mat-form-field>
-      </mat-card-content>
-      <mat-card-content fxLayout="column" fxLayoutAlign="space-around none">
-        <mat-form-field>
-          <input
-            matInput
-            placeholder="Repita la contraseña"
-            [formControl]="passwordRepeat"
-            [type]="hide ? 'text' : 'password'"
-          />
-          <mat-error *ngIf="passwordRepeat.invalid">{{
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Repita la contraseña" [formControl]="passwordRepeat"
+        [type]="hide ? 'text' : 'password'" />
+      <mat-error *ngIf="passwordRepeat.invalid">{{
             getErrorMessagePasswordRepeat()
           }}</mat-error>
 
-          <mat-icon matSuffix (click)="hide = !hide">{{
+      <mat-icon matSuffix (click)="hide = !hide">{{
             hide ? "visibility" : "visibility_off"
           }}</mat-icon>
-        </mat-form-field>
-      </mat-card-content>
-      <mat-card-actions>
-        <button class="login-button" mat-raised-button color="primary" (click)="register()">Registrarme</button>
-        <a class="register-button" mat-raised-button color="warn" routerLink="">Volver a login</a>
+    </mat-form-field>
+    <button class="login-button" mat-raised-button color="primary" (click)="register()">Registrarme</button>
+    <a class="register-button" mat-raised-button color="warn" routerLink="">Volver a login</a>
 
-      </mat-card-actions>
-    </mat-card>
   </div>
-

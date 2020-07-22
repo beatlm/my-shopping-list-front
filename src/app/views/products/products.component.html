@@ -1,7 +1,8 @@
 <div class="main-div">
-  <mat-card class="main-container">
 
-  <table mat-table [dataSource]="listado" [ngStyle]="shop=='dia' ? {'background':'rgba(255,177,163,1)'} : shop=='carrefour' ? {'background':'rgba(183,222,237,1)'} : shop=='mercadona' ? {'background': 'rgba(206,235,210,1)'} : {'background-color':'white'}" class="mat-elevation-z8 center background-shop">
+  <table mat-table [dataSource]="listado"
+    [ngStyle]="shop=='dia' ? {'background':'rgba(255,177,163,1)'} : shop=='carrefour' ? {'background':'rgba(183,222,237,1)'} : shop=='mercadona' ? {'background': 'rgba(206,235,210,1)'} : {'background-color':'white'}"
+    class="mat-elevation-z8 center background-shop">
 
     <ng-container matColumnDef="product">
       <th mat-header-cell *matHeaderCellDef> Producto </th>
@@ -17,20 +18,18 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" (swiperight)="delete(product)"></tr>
   </table>
 
-  
+  <div class="btn">
     <mat-form-field class="form-field">
-      <input matInput placeholder="Añadir producto" [formControl]="formProduct" />
+      <input matInput placeholder="Nuevo producto" [formControl]="formProduct" />
     </mat-form-field>
     <button mat-icon-button color="primary" (click)="addProduct()">
       <mat-icon aria-hidden="false">add</mat-icon>
     </button>
- 
-
-    <mat-card-footer>	
+  </div>
+  <div class="btn">
     <a mat-button routerLink="/shops">
       <mat-icon>arrow_back_ios</mat-icon>Volver
     </a>
-    </mat-card-footer>
-  </mat-card>
+  </div>
 
 </div>

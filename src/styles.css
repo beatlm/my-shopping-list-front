@@ -14,8 +14,11 @@ h1 {
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
 .main-div{
   display: flex;
+  flex-direction: column;
+  padding: 2em;
   justify-content: center;
   align-items: center;
 }
@@ -27,4 +30,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 table.mat-table{
   width: 100%;
 }
-
+.btn{
+  display: flex;
+  flex-direction: row;
+}

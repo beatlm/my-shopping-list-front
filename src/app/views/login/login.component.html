@@ -1,18 +1,11 @@
 <div class="main-div">
-  <mat-card class="main-container">
-    <mat-card-header>
-      <mat-card-title>Introduzca sus datos para acceder</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
       <mat-form-field>
-        <input matInput placeholder="E-mail" [formControl]="email" required />
+        <input matInput autocomplete='email' placeholder="E-mail" [formControl]="email" required />
         <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
       </mat-form-field>
-    </mat-card-content>
 
-    <mat-card-content>
       <mat-form-field>
-        <input matInput placeholder="Contraseña" [formControl]="password" [type]="hide ? 'text' : 'password'" />
+        <input matInput autocomplete="current-password" placeholder="Contraseña" [formControl]="password" [type]="hide ? 'text' : 'password'" />
         <mat-error *ngIf="password.invalid">{{
             getErrorMessagePassword()
           }}</mat-error>
@@ -21,10 +14,6 @@
             hide ? "visibility" : "visibility_off"
           }}</mat-icon>
       </mat-form-field>
-    </mat-card-content>
-    <mat-card-actions>
       <button mat-raised-button class="login-button" (click)="login()">Entrar</button>
       <button mat-raised-button class="register-button" color="link" routerLink="register">Registrarme</button>
-    </mat-card-actions>
-  </mat-card>
 </div>
