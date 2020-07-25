@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.1'
 services: 
   
    my-shopping-list-ui:
@@ -13,8 +13,6 @@ services:
      ports: #Comentado para no exponerlo hacia fuera
        - 4200:4200
      image: my-shopping-list-img
-
-
 
 
 
